@@ -14,6 +14,7 @@
     padding: 16px;
     color: #fff;
 }
+
 .aluno{
     font-family: monospace;
     width: 200px;
@@ -23,11 +24,10 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
 .aluno__nota{
     font-size: 120px;
 }
-
-
 
 .sombra-azul{
     background-color:  blue;

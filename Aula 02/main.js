@@ -11,14 +11,15 @@ const adicionarCard = (aluno) => {
     const container = document.getElementById('container')
     const novaDiv = document.createElement('div')
     novaDiv.classList.add('aluno')
+
+    if (aluno.nota < 6) {
+        novaDiv.classList.add('sombra-vermelha')
+    } else {
+        novaDiv.classList.add('sombra-azul')
+    }
+
     novaDiv.innerHTML = `<h2 class="aluno__nome">${aluno.nome}</h2>
                         <span class="aluno__nota">${aluno.nota}</span>`
-
-    if(nota > 5){
-        novaDiv.classList.add('sombra-azul')
-    } else if(nota < 5){
-        novaDiv.classList.add('sombra-vermelha')
-    }
 
     container.appendChild(novaDiv)
 }
@@ -26,57 +27,39 @@ const adicionarCard = (aluno) => {
 const handleClick = () => {
 
     const aluno = {
-        nome: prompt('Digite o nome do aluno'),
-        nota: prompt('Digite uma nota:').replace(',','.')
+        nome: fazerVerfificacaoNome(prompt('Digite o nome do aluno: ')),
+        nota: fazerVerfificacaoNota(prompt('Digite uma nota:').replace(',', '.'))
     }
 
-    if(fazerVerfificacaoNome(aluno.nome) == true || fazerVerfificacao(aluno.nota)){
-        
-    } else {
-        alert('Algo deu errado')
-    }
-    
-    
+    adicionarCard(aluno)
 }
 
-const fazerVerfificacaoNome = (nomeDigitado, notaDigitada) => {
+const fazerVerfificacaoNome = (nomeDigitado) => {
     let nome = nomeDigitado
-    let nota = notaDigitada
-    let status = true
-
-    if(nome == '' || nota == ''){
+    
+    if (nome == '') {
         alert('Você deixou algum dos espaços em branco.')
-    } else if(isNaN(nota)){
-        alert('Você não digitou números.')
-    } else if(nota < 0 || nota > 10){
-        alert('Digite uma nota válida')
-    } else if(!isNaN(nome)) {
-        alert('Você digitou numeros no lugar do nome')
-    }
-    else if(nota == null || nome == null){
-        alert('Você esqueceu de digitar algum valor')
+    } else if (!isNaN(nome)) {
+        alert('Você digitou números no lugar do nome.')
+    } else if (nome == null) {
+        alert('Você esqueceu de digitar algum valor.')
     } else {
         return nome
     }
 }
 
-const fazerVerfificacao = (nomeDigitado, notaDigitada) => {
-    let nome = nomeDigitado
+const fazerVerfificacaoNota = (notaDigitada) => {
     let nota = notaDigitada
-    let status = true
 
-    if(nome == '' || nota == ''){
+    if (nota == '') {
         alert('Você deixou algum dos espaços em branco.')
-    } else if(isNaN(nota)){
+    } else if (isNaN(nota)) {
         alert('Você não digitou números.')
-    } else if(nota < 0 || nota > 10){
-        alert('Digite uma nota válida')
-    } else if(!isNaN(nome)) {
-        alert('Você digitou numeros no lugar do nome')
-    }
-    else if(nota == null || nome == null){
+    } else if (nota < 0 || nota > 10) {
+        alert('Digite uma nota válida') 
+    } else if (nota == null) {
         alert('Você esqueceu de digitar algum valor')
-    } else {
+    } else{
         return nota
     }
 }
