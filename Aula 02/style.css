@@ -15,7 +15,13 @@
     color: #fff;
 }
 
-.aluno{
+
+.aluno__nota{
+    font-size: 120px;
+}
+
+.sombra-azul{
+    background-color:  blue;
     font-family: monospace;
     width: 200px;
     height: 200px;
@@ -25,14 +31,13 @@
     justify-content: space-evenly;
 }
 
-.aluno__nota{
-    font-size: 120px;
-}
-
-.sombra-azul{
-    background-color:  blue;
-}
-
 .sombra-vermelha{
     background-color: red;
+    font-family: monospace;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }

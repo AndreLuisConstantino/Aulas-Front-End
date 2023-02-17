@@ -10,7 +10,6 @@ const adicionar = document.getElementById('adicionar')
 const adicionarCard = (aluno) => {
     const container = document.getElementById('container')
     const novaDiv = document.createElement('div')
-    novaDiv.classList.add('aluno')
 
     if (aluno.nota < 6) {
         novaDiv.classList.add('sombra-vermelha')
