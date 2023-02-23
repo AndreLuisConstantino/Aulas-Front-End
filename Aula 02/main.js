@@ -23,44 +23,60 @@ const adicionarCard = (aluno) => {
     container.appendChild(novaDiv)
 }
 
-const handleClick = () => {
+const fazerVerfificacaoNota = (notaDigitada) => {
+    let nota = notaDigitada
+    let status = false
 
-    const aluno = {
-        nome: fazerVerfificacaoNome(prompt('Digite o nome do aluno: ')),
-        nota: fazerVerfificacaoNota(prompt('Digite uma nota:').replace(',', '.'))
+    if (nota == '') {
+        alert('Você deixou algum dos espaços em branco.')
+        status = false
+    } else if (isNaN(nota)) {
+        alert('Você não digitou números.')
+        status = false
+    } else if (nota < 0 || nota > 10) {
+        alert('Digite uma nota válida') 
+        status = false
+    } else if (nota == null) {
+        alert('Você esqueceu de digitar algum valor')
+        status = false
+    } else{
+        return nota
     }
-
-    adicionarCard(aluno)
 }
 
 const fazerVerfificacaoNome = (nomeDigitado) => {
     let nome = nomeDigitado
+    let status = true
     
     if (nome == '') {
         alert('Você deixou algum dos espaços em branco.')
+        status = false
     } else if (!isNaN(nome)) {
-        alert('Você digitou números no lugar do nome.')
+        alert('Você não digitou letras.')
+        status = false
     } else if (nome == null) {
         alert('Você esqueceu de digitar algum valor.')
+        status = false
     } else {
         return nome
     }
 }
 
-const fazerVerfificacaoNota = (notaDigitada) => {
-    let nota = notaDigitada
+const handleClick = () => {
 
-    if (nota == '') {
-        alert('Você deixou algum dos espaços em branco.')
-    } else if (isNaN(nota)) {
-        alert('Você não digitou números.')
-    } else if (nota < 0 || nota > 10) {
-        alert('Digite uma nota válida') 
-    } else if (nota == null) {
-        alert('Você esqueceu de digitar algum valor')
-    } else{
-        return nota
+    const aluno = {
+        nome: fazerVerfificacaoNome(prompt('Digite o nome do aluno: ')),
+        nota: fazerVerfificacaoNota(prompt('Digite uma nota:').replace(',', '.'))
+    } 
+    if(aluno.nome != false && aluno.nota != false){
+        
+        adicionarCard(aluno)
     }
+
+    
 }
+ 
+
+
 
 adicionar.addEventListener('click', handleClick)
