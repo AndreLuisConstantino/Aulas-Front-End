@@ -34,6 +34,5 @@ const carregarProdutos = () => {
     container.replaceChildren(...cards)
 }
 
-carregarProdutos()
-carregarProdutos()
+
 carregarProdutos()
